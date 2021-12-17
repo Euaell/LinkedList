@@ -79,25 +79,34 @@ public:
         return 0;
     }
 
-//    inserts the value of the second argument to the list at the given index
+//    inserts the value to the list in the right order
     void insert(int value){
         int z = this->count();
-        Node * nodeptr = head;
+        at = head;
         Node * prevptr = nullptr;
+        if (z == 0){
+            head = new Node(value, nullptr, nullptr);
+        }
         while(z > 0){
-            if (nodeptr -> getValue() >= value){
-                nodeptr -> setPrevious(new Node(value, nodeptr, prevptr));
-                prevptr ->setNext(nodeptr -> getPrevious());
+            if (at -> getValue() >= value){
+                if (at == head){
+                    head = new Node(value, at, nullptr);
+                    at->setPrevious(head);
+                    break;
+                }
+                at -> setPrevious(new Node(value, at, prevptr));
+                prevptr -> setNext(at -> getPrevious());
                 break;
             }
-            if (nodeptr -> getNext() == nullptr){
-                nodeptr ->setNext(new Node(value, nullptr, nodeptr));
+            if (at -> getNext() == nullptr){
+                at ->setNext(new Node(value, nullptr, at));
                 break;
             }
-            prevptr = nodeptr;
-            nodeptr = nodeptr ->getNext();
+            prevptr = at;
+            at = at ->getNext();
             z--;
         }
+        at = nullptr;
     }
 };
 
