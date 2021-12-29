@@ -1,10 +1,10 @@
 //
 // Created by euael on 11/27/2021.
 //
-#include "Node.h"
+#include <iostream>
 #ifndef LINKEDLIST_SORTEDLIST_H
 #define LINKEDLIST_SORTEDLIST_H
-
+#include "Node.h"
 
 class SortedList {
 private:

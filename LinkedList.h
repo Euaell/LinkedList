@@ -64,23 +64,23 @@ public:
 //    returns value at the given index
     int At(int index){
         int z = this->count();
+        int ret = 0;
         if (index < z && index >= 0){
-            int x = 0;
             at = head;
-            while (x != index){
+            while (index > 0){
                 at = at->getNext();
-                x++;
+                index--;
             }
-            return at->getValue();
+            ret = at->getValue();
         }else{
             std::cerr << "index out of range!" << std::endl;
         }
         at = nullptr;
-        return 0;
+        return ret;
     }
 
 //    inserts the value to the list in the right order
-    void insert(int value){
+    void insertByValue(int value){
         int z = this->count();
         at = head;
         Node * prevptr = nullptr;
@@ -108,6 +108,58 @@ public:
         }
         at = nullptr;
     }
+
+//    insert the value at the given index
+    void insertByIndex(int index, int value){
+        int count = this->count();
+        if(index > count || index < 0){ // checks if the index is in range
+            std::cerr << "Index out of range!" << std::endl;
+        }else{
+            at = head;
+            while(at){
+                if (index <= 0){
+                    at->getPrevious()->setNext(new Node(value, at, at->getPrevious()) );
+                    at->setPrevious(at->getPrevious()->getNext());
+                    break;
+                }
+                index--;
+                at = at->getNext();
+            }
+        }
+        at = nullptr; // reset at to be null
+    }
+
+//    delete the node at the given index
+    void deleteAt(int index){
+        int count = this->count();
+        if(index > count || index < 0){ // checks if the index is in range
+            std::cerr << "Index out of range!" << std::endl;
+        }else{
+            at = head;
+            while(at){
+                if (index <= 0){
+                    if(at->getNext() == nullptr && at->getPrevious() != nullptr){ // end of list(tested OK)
+                        tail = at->getPrevious();
+                        at->getPrevious()->setNext(nullptr);
+                    }else if(at->getNext() != nullptr && at->getPrevious() == nullptr){ // at the begining of the list
+                        std::cout << "at the begining" << std::endl;
+                        head = at->getNext();
+                        at->getNext()->setPrevious(nullptr);
+                    }else if(at->getNext() == nullptr && at->getPrevious() == nullptr){ // only element (tested 200)
+                        head = nullptr;
+                        tail = nullptr;
+                    } else{ // middle of list (tested OK)
+                        at->getNext()->setPrevious(at->getPrevious());
+                        at->getPrevious()->setNext(at->getNext());
+                    }
+                    break;
+                }
+                index--;
+                at = at->getNext();
+            }
+        }
+    }
+
 };
 
 

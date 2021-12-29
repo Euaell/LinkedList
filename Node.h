@@ -31,8 +31,8 @@ public:
     int getValue() const{
         return value;
     }
-    void setValue(int x){
-        this->value = x;
+    void setValue(int val){
+        this->value = val;
     }
 
     //Next setter and getter
@@ -40,9 +40,9 @@ public:
 //        std::cout << "getting the next of " << this->getValue() << std::endl;
         return next;
     }
-    void setNext(Node * x){
-//        std::cout << "setting the next of " << this->getValue() << std::endl;
-        this->next = x;
+    void setNext(Node * nex){
+//        std::cout << "setting the nex of " << this->getValue() << std::endl;
+        this->next = nex;
     }
 
     // previous setter and getter
@@ -50,9 +50,9 @@ public:
 //        std::cout << "getting the Previous of " << this->getValue() << std::endl;
         return previous;
     }
-    void setPrevious(Node *x){
+    void setPrevious(Node *prev){
 //        std::cout << "setting the Previous of " << this->getValue() << std::endl;
-        this->previous = x;
+        this->previous = prev;
     }
 };
 
