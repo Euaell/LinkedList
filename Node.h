@@ -20,9 +20,6 @@ public:
 //            std::cout << "node created." << std::endl;
     }
 
-//        Node(int value){
-//            Node(value, nullptr, nullptr);
-//        }
 //    ~Node(){
 //        std::cout << "Node Destroyed" << std::endl;
 //    }
@@ -37,23 +34,20 @@ public:
 
     //Next setter and getter
     Node * getNext(){
-//        std::cout << "getting the next of " << this->getValue() << std::endl;
         return next;
     }
     void setNext(Node * nex){
-//        std::cout << "setting the nex of " << this->getValue() << std::endl;
         this->next = nex;
     }
 
     // previous setter and getter
     Node *getPrevious() {
-//        std::cout << "getting the Previous of " << this->getValue() << std::endl;
         return previous;
     }
     void setPrevious(Node *prev){
-//        std::cout << "setting the Previous of " << this->getValue() << std::endl;
         this->previous = prev;
     }
+
 };
 
 

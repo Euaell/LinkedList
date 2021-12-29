@@ -57,48 +57,68 @@ private:
     int first;
 public:
     explicit ArrQueue(int size){
-        this->size = size;
+        this->size = size + 1;
         this->arr = new int[size];
         this->last = 0;
         this->first = 0;
     }
+
     bool isFull(){
         return (last + 1)%size == first;
     }
+
     bool isEmpty(){
         return last%size == first;
     }
+
     int count(){
         int ret;
         if (last < first)
-           ret = (last + 1) + (size - first); // counts to the last and adds the last elements
+           ret = (last) + (size - first); // counts to the last and adds the last elements
         else if(last > first)
             ret = last - first;
         else
             ret = 0;
         return ret;
     }
+
     void print(){
-        // incomplete print function
+        if (isEmpty()){
+            std::cout << std::endl << "Queue is Empty." << std::endl;
+            return;
+        }
+        for (int i = 0; i < count(); ++i) {
+            int x = dequeue();
+            std::cout << x << " ";
+            enqueue(x);
+        }
+        std::cout << std::endl;
     }
+
     void enqueue(int value){
         if(isFull()){
             std::cout << "enqueing " <<  value << " Queue is Full." << std::endl;
             return;
         }
-        *(arr + last++%size) = value;
+        last = last%size;
+        *(arr + last) = value;
+        last++;
+//        std::cout << value << " queued." << std::endl;
     }
+
     int dequeue(){
         int ret;
         if(isEmpty()){
-            std::cout << "Queue is Empty." << std::endl;
+            std::cout << std::endl << "Queue is Empty." << std::endl;
             ret = -1;
         } else{
-            ret = *(arr + first++);
+            first = first%size;
+            ret = *(arr + first);
+            first++;
         }
         return ret;
     }
-//    int cou
+
 };
 
 #endif //LINKEDLIST_QUEUE_H
