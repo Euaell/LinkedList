@@ -62,7 +62,32 @@ public:
         this->last = 0;
         this->first = 0;
     }
-
+    bool isFull(){
+        return (last + 1)%size == first;
+    }
+    bool isEmpty(){
+        return last%size == first;
+    }
+    int count(){
+        // couldn't implement the count function
+    }
+    void enqueue(int value){
+        if(isFull()){
+            std::cout << "Queue is Full." << std::endl;
+            return;
+        }
+        *(arr + last++%size) = value;
+    }
+    int dequeue(){
+        int ret;
+        if(isEmpty()){
+            std::cout << "Queue is Empty." << std::endl;
+            ret = -1;
+        } else{
+            ret = *(arr + first++);
+        }
+        return ret;
+    }
 //    int cou
 };
 
