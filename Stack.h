@@ -37,7 +37,6 @@ public:
     void push(int value){
         stack.Add(value);
         top++;
-//        std::cout << "top is " << top << std::endl;
     }
 
     int Top(){
