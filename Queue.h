@@ -69,11 +69,21 @@ public:
         return last%size == first;
     }
     int count(){
-        // couldn't implement the count function
+        int ret;
+        if (last < first)
+           ret = (last + 1) + (size - first); // counts to the last and adds the last elements
+        else if(last > first)
+            ret = last - first;
+        else
+            ret = 0;
+        return ret;
+    }
+    void print(){
+        // incomplete print function
     }
     void enqueue(int value){
         if(isFull()){
-            std::cout << "Queue is Full." << std::endl;
+            std::cout << "enqueing " <<  value << " Queue is Full." << std::endl;
             return;
         }
         *(arr + last++%size) = value;
