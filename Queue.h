@@ -23,6 +23,14 @@ public:
         return count() <= 0;
     }
 
+    void print(){
+        if (isEmpty()){
+            std::cout << "Queue is Empty!" << std::endl;
+            return;
+        }
+        queue.print();
+    }
+
     void enqueue(int value){
         queue.Add(value);
         last++;
@@ -34,7 +42,7 @@ public:
             std::cout << "queue is Empty!" << std::endl;
             ret = -1;
         } else{
-            ret = queue.At(last);
+            ret = queue.At(0);
             queue.deleteAt(0);
         }
         return ret;
@@ -55,7 +63,7 @@ public:
         this->first = 0;
     }
 
-    int cou
+//    int cou
 };
 
 #endif //LINKEDLIST_QUEUE_H

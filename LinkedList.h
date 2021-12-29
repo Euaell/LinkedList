@@ -141,8 +141,7 @@ public:
                     if(at->getNext() == nullptr && at->getPrevious() != nullptr){ // end of list(tested OK)
                         tail = at->getPrevious();
                         at->getPrevious()->setNext(nullptr);
-                    }else if(at->getNext() != nullptr && at->getPrevious() == nullptr){ // at the begining of the list
-                        std::cout << "at the begining" << std::endl;
+                    }else if(at->getNext() != nullptr && at->getPrevious() == nullptr){ // at the begining of the list (tested 200)
                         head = at->getNext();
                         at->getNext()->setPrevious(nullptr);
                     }else if(at->getNext() == nullptr && at->getPrevious() == nullptr){ // only element (tested 200)
