@@ -6,6 +6,8 @@
 #define LINKEDLIST_NODE_H
 
 
+#include <iostream>
+
 class Node {
 private:
     Node *next;
