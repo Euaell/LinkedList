@@ -62,6 +62,10 @@ public:
         this->last = 0;
         this->first = 0;
     }
+    ~ArrQueue(){
+        std::cout << "Queue deleted!" << std::endl;
+        delete [] arr;
+    }
 
     bool isFull(){
         return (last + 1)%size == first;

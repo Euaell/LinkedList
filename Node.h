@@ -20,9 +20,10 @@ public:
 //            std::cout << "node created." << std::endl;
     }
 
-//    ~Node(){
-//        std::cout << "Node Destroyed" << std::endl;
-//    }
+    ~Node(){
+        delete this;
+        std::cout << "Node Destroyed" << std::endl;
+    }
 
     //value setter and getter
     int getValue() const{

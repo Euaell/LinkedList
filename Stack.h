@@ -74,6 +74,10 @@ public:
         this->arr = new int[this->size];
         this->top = -1;
     }
+    ~ArrStack(){
+        std::cout << "Stack deleted." << std::endl;
+        delete [] arr;
+    }
     bool isFull(){
         return top >= size - 1;
     }
