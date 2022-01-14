@@ -84,7 +84,7 @@ public:
         int z = this->count();
         at = head;
         Node * prevptr = nullptr;
-        if (z == 0){
+        if (z == 0){ // for an empty list
             head = new Node(value, nullptr, nullptr);
         }
         while(z > 0){
@@ -117,8 +117,8 @@ public:
         }else{
             at = head;
             while(at){
-                if (index <= 0){
-                    at->getPrevious()->setNext(new Node(value, at, at->getPrevious()) );
+                if (index <= 0){ // needs some tweek ... for begnning of the list and end of list
+                    at->getPrevious()->setNext(new Node(value, at, at->getPrevious()));
                     at->setPrevious(at->getPrevious()->getNext());
                     break;
                 }
@@ -132,7 +132,7 @@ public:
 //    delete the node at the given index
     void deleteAt(int index){
         int count = this->count();
-        if(index > count || index < 0){ // checks if the index is in range
+        if(index >= count || index < 0){ // checks if the index is in range
             std::cerr << "Index out of range!" << std::endl;
         }else{
             at = head;

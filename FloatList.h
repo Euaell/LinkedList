@@ -98,7 +98,6 @@ public:
             return;
         }
         nodePtr = head;
-        prevPtr = nullptr;
         prevprevPtr = nullptr;
         while (nodePtr){
             prevPtr = nodePtr;

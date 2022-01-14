@@ -67,11 +67,11 @@ public:
         delete [] arr;
     }
 
-    bool isFull(){
+    bool isFull() const{
         return (last + 1)%size == first;
     }
 
-    bool isEmpty(){
+    bool isEmpty() const{
         return last%size == first;
     }
 
@@ -91,6 +91,8 @@ public:
             std::cout << std::endl << "Queue is Empty." << std::endl;
             return;
         }
+//        to display to array stack we first dequeue form
+//        the stack display the value and enqueue it again, for all the elements
         for (int i = 0; i < count(); ++i) {
             int x = dequeue();
             std::cout << x << " ";
