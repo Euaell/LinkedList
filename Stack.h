@@ -65,14 +65,15 @@ public:
 
 class ArrStack{
 private:
-    int * arr;
+    double * arr;
     int size;
     int top;
 public:
     explicit ArrStack(int size){
         this->size = size;
-        this->arr = new int[this->size];
+        this->arr = new double [this->size];
         this->top = -1;
+        std::cout << "Stack Created." << std::endl;
     }
     ~ArrStack(){
         std::cout << "Stack deleted." << std::endl;
@@ -88,14 +89,14 @@ public:
         return top + 1;
     }
 
-    void push(int value){
+    void push(double value){
         if (isFull()){
             std::cerr << "Stack is Full." << std::endl;
             return;
         }
         *(arr + ++top) = value;
     }
-    int pop(){
+    double pop(){
         if (isEmpty()){
             return -1;
         }
